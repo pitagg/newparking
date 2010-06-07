@@ -1,6 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-pita:
-  name: Pita
-  email: pitagg@gmail.com
-  password: 123456
+# one:
+#   column: value
+#
+# two:
+#   column: value
