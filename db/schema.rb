@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100607030234) do
   end
 
   create_table "vehicle_types", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
