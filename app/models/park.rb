@@ -1,11 +1,13 @@
 class Park < ActiveRecord::Base
+  belongs_to :user
+
   validates_presence_of :name, :address
-  validate :creator_is_valid
+  validate :user_is_valid
   
   private
   
   # Valida a existência do usuário informado como criador do estacionamento
-  def creator_is_valid
-    self.errors.add(:creator_id, "Usuário criador não encontrado.") if User.all(:conditions => {:id => self.creator_id}).count == 0
+  def user_is_valid
+    self.errors.add(:user_id, "Usuário criador não cadastrado.") if User.all(:conditions => {:id => self.user_id}).count == 0
   end
 end
