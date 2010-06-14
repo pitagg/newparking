@@ -9,14 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100607030234) do
+ActiveRecord::Schema.define(:version => 20100614022629) do
+
+  create_table "parking_spaces", :force => true do |t|
+    t.integer  "park_id"
+    t.integer  "vehicle_type_id"
+    t.integer  "user_id"
+    t.integer  "amount_spaces"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parks", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -31,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20100607030234) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
 end

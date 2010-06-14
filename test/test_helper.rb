@@ -35,4 +35,29 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  # Retorna um usuário como current_user (usuário logado)
+  def current_user
+    users(:pita)
+  end
+  
+  # Cria um estacionamento válido
+  def create_park(data={})
+    data = {:name => "Meu estacionamento", :address => "Planeta Terra", :user_id => users(:pita).id}.merge(data)
+    Park.create data
+  end
+  
+  # Cria um Tipo de Veículo válido
+  def create_vehicle_type(data={})
+    data = {:name => "Carro de passeio", :user_id => users(:pita).id}.merge(data)
+    VehicleType.create(data)
+  end
+  
+  # Cria uma associação de Park e VehicleType (ParkingSpace) válida
+  def create_parking_space(data={})
+    park = create_park
+    vt = create_vehicle_type
+    data = {:user_id => users(:pita).id, :park_id => park.id, :vehicle_type_id => vt.id, :amount_spaces => 10}.merge(data)
+    ParkingSpace.create(data)
+  end
 end
